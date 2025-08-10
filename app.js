@@ -263,7 +263,9 @@ function onBookmarkClick() {
   }
   // Save current top-most ayah in viewport if any, else first ayah
   const ayah = firstVisibleAyah() || 1;
-  setBookmark({ surah: parseInt(state.currentSurah.number, 10), ayah });
+  const bm = { surah: parseInt(state.currentSurah.number, 10), ayah };
+  setBookmark(bm);
+  renderContinue(bm);
   bookmarkBtn.classList.add('saved');
   setTimeout(()=>bookmarkBtn.classList.remove('saved'), 600);
 }
@@ -418,7 +420,9 @@ window.addEventListener('scroll', scheduleAutoBookmark, { passive: true });
 
 function saveBookmarkAyah(ayah){
   if (!state.currentSurah) return;
-  setBookmark({ surah: parseInt(state.currentSurah.number, 10), ayah });
+  const bm = { surah: parseInt(state.currentSurah.number, 10), ayah };
+  setBookmark(bm);
+  renderContinue(bm);
   // kecilkan notifikasi visual pada tombol yang diklik
   const btn = document.querySelector(`#ayah-${ayah} .tools .icon-btn`);
   if (btn){
