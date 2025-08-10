@@ -1,8 +1,8 @@
 *{box-sizing:border-box}html,body{margin:0;padding:0}
 :root{--bg:#fafafa;--text:#111;--muted:#444;--card:#fff;--border:#eee;--badge-bg:#f4f6ff;--badge-border:#e7eaff;--badge-text:#3043d8;--juz-bg:#f0f3ff;--juz-border:#ccd3ff;--juz-text:#2233cc;--btn-border:#e5e5e5;--btn-hover:#f7f7f7;--id-bg:#e9f5ef;--id-border:#2a7d5f;--id-text:#1b3a2e;--gor-bg:#f4f1ff;--gor-border:#6c63ff;--gor-text:#2b2d42;--accent:#0ea5e9}
 [data-theme="dark"]{--bg:#0f1216;--text:#e9edf1;--muted:#b6bec9;--card:#161a20;--border:#2a2f38;--badge-bg:#1b2230;--badge-border:#283347;--badge-text:#90a4ff;--juz-bg:#151d2a;--juz-border:#283347;--juz-text:#98b2ff;--btn-border:#313843;--btn-hover:#222833;--id-bg:#12261e;--id-border:#2a7d5f;--id-text:#cfeee0;--gor-bg:#1d1730;--gor-border:#6c63ff;--gor-text:#e6e2ff}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg)}
-.app-header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:#fff;border-bottom:1px solid #eee}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);font-size:clamp(16px,4vw,18px)}
+.app-header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:var(--card);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
 .app-header{background:var(--card);border-color:var(--border)}
 .brand{font-weight:600}
 .controls{display:flex;gap:.5rem}
@@ -26,7 +26,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .toc-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem}
 .toc h2{margin:0;font-size:1.1rem}
 .search{flex:1;border:1px solid var(--btn-border);background:var(--card);color:var(--text);border-radius:8px;padding:.5rem .6rem}
-.surah-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.surah-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.5rem}
 .juz-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.5rem}
 .juz-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem .7rem;cursor:pointer;text-align:center}
 .juz-card:hover{outline:2px solid var(--juz-border)}
@@ -44,7 +44,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .ayat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem}
 .badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--badge-bg);border:1px solid var(--badge-border);color:var(--badge-text);font-size:.75rem;padding:.2rem .45rem;border-radius:999px}
 .juz-sep{position:sticky;top:48px;margin:.75rem 0 .25rem;background:var(--juz-bg);color:var(--juz-text);border:1px solid var(--juz-border);border-radius:999px;padding:.25rem .6rem;width:max-content}
-.arabic{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:1.55rem;line-height:2;text-align:right;direction:rtl;color:#111}
+.arabic{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:clamp(1.2rem,5vw,2rem);line-height:2;text-align:right;direction:rtl;color:#111}
 .arabic{color:var(--text)}
 .trans{display:grid;grid-template-columns:1fr;gap:.35rem;margin-top:.4rem}
 .trans .id,.trans .gor{font-size:.98rem}
@@ -58,7 +58,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .modal.hidden{display:none}
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
 .modal-backdrop{position:absolute;inset:0;background:#0006}
-.modal-card{position:relative;background:var(--card);color:var(--text);width:min(720px,92vw);max-height:85vh;border-radius:12px;overflow:auto;box-shadow:0 10px 30px #0004;border:1px solid var(--border)}
+.modal-card{position:relative;background:var(--card);color:var(--text);max-width:720px;width:92vw;max-height:85vh;border-radius:12px;overflow:auto;box-shadow:0 10px 30px #0004;border:1px solid var(--border)}
 .modal-header{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid #eee}
 .modal-header{border-color:var(--border)}
 .modal-title{font-weight:600}
