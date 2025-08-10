@@ -254,7 +254,13 @@ async function onChangeSurah() {
 }
 
 function onBookmarkClick() {
-  if (!state.currentSurah) return;
+  if (!state.currentSurah) {
+    const bm = getBookmark();
+    if (bm && bm.surah) {
+      selectSurah(bm.surah, bm.ayah || 1);
+    }
+    return;
+  }
   // Save current top-most ayah in viewport if any, else first ayah
   const ayah = firstVisibleAyah() || 1;
   setBookmark({ surah: parseInt(state.currentSurah.number, 10), ayah });
