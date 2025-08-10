@@ -124,6 +124,8 @@ function renderSurahSelect() {
 
 function renderTOC(){
   const grid = document.querySelector('#surahGrid');
+  const skeleton = grid.querySelector('.loading-skeleton');
+  if (skeleton) skeleton.style.display = 'none';
   grid.innerHTML = '';
   state.surahs.forEach(s=>{
     const card = document.createElement('div');
@@ -153,6 +155,8 @@ function renderTOC(){
 
 function renderJuzGrid(){
   const grid = document.querySelector('#juzGrid');
+  const skeleton = grid.querySelector('.loading-skeleton');
+  if (skeleton) skeleton.style.display = 'none';
   grid.innerHTML = '';
   JUZ_DATA.forEach(j=>{
     const card = document.createElement('div');
