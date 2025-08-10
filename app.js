@@ -422,12 +422,14 @@ function saveBookmarkAyah(ayah){
 }
 
 function showAbout(){
-  const message = `Qur'an Online adalah proyek open-source yang masih aktif dikembangkan.
+  const message = `بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+
+Qur'an Online adalah proyek open-source yang masih aktif dikembangkan.
 
 Kami membangun aplikasi ini untuk memudahkan pembacaan Al-Qur'an, memperkaya pengalaman dengan terjemahan Bahasa Indonesia dan Gorontalo, sekaligus melestarikan bahasa daerah melalui teknologi. Masukan Anda sangat berarti untuk menjadikannya lebih bermanfaat bagi banyak orang. Mari berkontribusi, mengusulkan fitur, atau melaporkan kendala yang Anda temukan.
 
 Tim pengembang:
-- @func0, @zr0n, @iezmyS, @wahyup, @wahyudinh, @richieoct, @fadlip, @wahyut, @amangp, @eten, @adamakj, @rachmatj, @ando, @opanje, @midin
+- @func0, @zr0n, @iezmyS, @wahyup, @wahyudinh, @richieoct, @fadlip, @wahyut, @amangp, @eten, @adamakj, @rachmatj, @ando, @opanje, @midin, @fadhilh
 `;
   openModal('Tentang Aplikasi', message);
 }
