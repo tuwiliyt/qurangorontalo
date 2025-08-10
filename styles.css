@@ -1,0 +1,67 @@
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+:root{--bg:#fafafa;--text:#111;--muted:#444;--card:#fff;--border:#eee;--badge-bg:#f4f6ff;--badge-border:#e7eaff;--badge-text:#3043d8;--juz-bg:#f0f3ff;--juz-border:#ccd3ff;--juz-text:#2233cc;--btn-border:#e5e5e5;--btn-hover:#f7f7f7;--id-bg:#e9f5ef;--id-border:#2a7d5f;--id-text:#1b3a2e;--gor-bg:#f4f1ff;--gor-border:#6c63ff;--gor-text:#2b2d42;--accent:#0ea5e9}
+[data-theme="dark"]{--bg:#0f1216;--text:#e9edf1;--muted:#b6bec9;--card:#161a20;--border:#2a2f38;--badge-bg:#1b2230;--badge-border:#283347;--badge-text:#90a4ff;--juz-bg:#151d2a;--juz-border:#283347;--juz-text:#98b2ff;--btn-border:#313843;--btn-hover:#222833;--id-bg:#12261e;--id-border:#2a7d5f;--id-text:#cfeee0;--gor-bg:#1d1730;--gor-border:#6c63ff;--gor-text:#e6e2ff}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg)}
+.app-header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:#fff;border-bottom:1px solid #eee}
+.app-header{background:var(--card);border-color:var(--border)}
+.brand{font-weight:600}
+.controls{display:flex;gap:.5rem}
+.control{font-size:14px;padding:.45rem .6rem;border:1px solid var(--btn-border);border-radius:8px;background:var(--card);color:var(--text)}
+#bookmarkBtn{font-size:16px;line-height:1}
+.content{max-width:900px;margin:0 auto;padding:1rem}
+.home{display:block}
+.home.elegant{display:grid;grid-template-columns:1fr;gap:1rem}
+.hero{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 6px 18px #0002;min-height:220px;background:linear-gradient(135deg,#0a1a2b,#122944)}
+.hero img{width:100%;height:220px;object-fit:cover;display:block}
+.hero-art .calligraphy{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Scheherazade New',serif;font-size:5rem;color:#ffffff18}
+.hero-art .hero-overlay{position:absolute;bottom:14px;left:16px;font-family:'Reem Kufi',sans-serif;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 8px #0009}
+.badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+.chip{display:inline-block;background:var(--badge-bg);border:1px solid var(--badge-border);color:var(--badge-text);font-size:.8rem;padding:.2rem .5rem;border-radius:999px}
+.welcome h1{margin:.2rem 0 0}
+.welcome p{margin:.2rem 0 1rem;color:var(--muted)}
+.continue{background:var(--card);border:1px solid var(--border);border-radius:12px;margin:.5rem 0}
+.continue-body{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1rem}
+.continue-text{color:var(--text)}
+.toc{margin-top:1rem}
+.toc-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem}
+.toc h2{margin:0;font-size:1.1rem}
+.search{flex:1;border:1px solid var(--btn-border);background:var(--card);color:var(--text);border-radius:8px;padding:.5rem .6rem}
+.surah-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.surah-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem .7rem;cursor:pointer}
+.surah-card:hover{outline:2px solid var(--juz-border)}
+.surah-name{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.surah-name .latin{font-weight:600}
+.surah-name .arab{font-family:'Noto Naskh Arabic',serif}
+.surah-sub{color:var(--muted);font-size:.85rem;margin-top:.15rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;color:var(--muted);font-size:.9rem;margin-bottom:.5rem}
+.bismillah{font-family:'Noto Naskh Arabic',serif;font-size:1.75rem;text-align:center;margin:1rem 0}
+.ayat-list{display:flex;flex-direction:column;gap:.75rem}
+.ayat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.75rem .9rem}
+.ayat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem}
+.badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--badge-bg);border:1px solid var(--badge-border);color:var(--badge-text);font-size:.75rem;padding:.2rem .45rem;border-radius:999px}
+.juz-sep{position:sticky;top:48px;margin:.75rem 0 .25rem;background:var(--juz-bg);color:var(--juz-text);border:1px solid var(--juz-border);border-radius:999px;padding:.25rem .6rem;width:max-content}
+.arabic{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:1.55rem;line-height:2;text-align:right;direction:rtl;color:#111}
+.arabic{color:var(--text)}
+.trans{display:grid;grid-template-columns:1fr;gap:.35rem;margin-top:.4rem}
+.trans .id,.trans .gor{font-size:.98rem}
+.trans .id{color:var(--id-text);background:var(--id-bg);border-left:4px solid var(--id-border);padding:.35rem .5rem;border-radius:6px}
+.trans .gor{color:var(--gor-text);background:var(--gor-bg);border-left:4px solid var(--gor-border);padding:.35rem .5rem;border-radius:6px}
+.tools{display:flex;gap:.35rem}
+.icon-btn{border:1px solid var(--btn-border);background:var(--card);color:var(--text);border-radius:8px;font-size:14px;padding:.2rem .45rem;cursor:pointer}
+.icon-btn:hover{background:var(--btn-hover)}
+.icon-btn.active{background:var(--juz-bg);border-color:var(--juz-border);color:var(--juz-text)}
+.app-footer{padding:1rem;color:#666;font-size:.85rem;text-align:center}
+.modal.hidden{display:none}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.modal-backdrop{position:absolute;inset:0;background:#0006}
+.modal-card{position:relative;background:var(--card);color:var(--text);width:min(720px,92vw);max-height:85vh;border-radius:12px;overflow:auto;box-shadow:0 10px 30px #0004;border:1px solid var(--border)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid #eee}
+.modal-header{border-color:var(--border)}
+.modal-title{font-weight:600}
+.modal-body{padding:1rem}
+.modal-body pre{white-space:pre-wrap;word-wrap:break-word;font-family:inherit}
+@media(min-width:720px){.trans{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){
+  .home.elegant{grid-template-columns:1.1fr .9fr}
+  .hero img{height:100%}
+}
