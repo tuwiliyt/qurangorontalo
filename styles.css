@@ -27,6 +27,10 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .toc h2{margin:0;font-size:1.1rem}
 .search{flex:1;border:1px solid var(--btn-border);background:var(--card);color:var(--text);border-radius:8px;padding:.5rem .6rem}
 .surah-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.juz-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.5rem}
+.juz-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem .7rem;cursor:pointer;text-align:center}
+.juz-card:hover{outline:2px solid var(--juz-border)}
+.juz-name{font-weight:600}
 .surah-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem .7rem;cursor:pointer}
 .surah-card:hover{outline:2px solid var(--juz-border)}
 .surah-name{display:flex;align-items:center;justify-content:space-between;gap:.5rem}

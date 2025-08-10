@@ -3,6 +3,7 @@ const DATA_DIR = '../json_enriched';
 const el = (q) => document.querySelector(q);
 const surahSelect = el('#surahSelect');
 const homeBtn = el('#homeBtn');
+const juzBtn = el('#juzBtn');
 const ayatList = el('#ayatList');
 const metaBox = el('#meta');
 const bismillah = el('#bismillah');
@@ -24,6 +25,39 @@ const state = {
 
 const BOOKMARK_KEY = 'quran.bookmark.v1';
 const THEME_KEY = 'quran.theme.v1';
+
+const JUZ_DATA = [
+  { juz: 1, surah: 1, ayah: 1 },
+  { juz: 2, surah: 2, ayah: 142 },
+  { juz: 3, surah: 2, ayah: 253 },
+  { juz: 4, surah: 3, ayah: 93 },
+  { juz: 5, surah: 4, ayah: 24 },
+  { juz: 6, surah: 4, ayah: 148 },
+  { juz: 7, surah: 5, ayah: 82 },
+  { juz: 8, surah: 6, ayah: 111 },
+  { juz: 9, surah: 7, ayah: 88 },
+  { juz: 10, surah: 8, ayah: 41 },
+  { juz: 11, surah: 9, ayah: 93 },
+  { juz: 12, surah: 11, ayah: 6 },
+  { juz: 13, surah: 12, ayah: 53 },
+  { juz: 14, surah: 15, ayah: 1 },
+  { juz: 15, surah: 17, ayah: 1 },
+  { juz: 16, surah: 18, ayah: 75 },
+  { juz: 17, surah: 21, ayah: 1 },
+  { juz: 18, surah: 23, ayah: 1 },
+  { juz: 19, surah: 25, ayah: 21 },
+  { juz: 20, surah: 27, ayah: 56 },
+  { juz: 21, surah: 29, ayah: 46 },
+  { juz: 22, surah: 33, ayah: 31 },
+  { juz: 23, surah: 36, ayah: 28 },
+  { juz: 24, surah: 39, ayah: 32 },
+  { juz: 25, surah: 41, ayah: 47 },
+  { juz: 26, surah: 46, ayah: 1 },
+  { juz: 27, surah: 51, ayah: 31 },
+  { juz: 28, surah: 58, ayah: 1 },
+  { juz: 29, surah: 67, ayah: 1 },
+  { juz: 30, surah: 78, ayah: 1 },
+];
 
 function getBookmark() {
   try { return JSON.parse(localStorage.getItem(BOOKMARK_KEY) || 'null'); } catch { return null; }
@@ -72,6 +106,7 @@ async function loadSurahList() {
   state.surahs = entries.sort((a,b)=>a.number-b.number);
   renderSurahSelect();
   renderTOC();
+  renderJuzGrid();
   const bm = getBookmark();
   renderContinue(bm);
   showHome();
@@ -115,6 +150,47 @@ function renderTOC(){
     });
   });
 }
+
+function renderJuzGrid(){
+  const grid = document.querySelector('#juzGrid');
+  grid.innerHTML = '';
+  JUZ_DATA.forEach(j=>{
+    const card = document.createElement('div');
+    card.className = 'juz-card';
+    card.addEventListener('click', ()=> loadJuz(j.juz));
+    const name = document.createElement('div');
+    name.className = 'juz-name';
+    name.textContent = `Juz ${j.juz}`;
+    card.appendChild(name);
+    grid.appendChild(card);
+  });
+}
+
+function loadJuz(juz) {
+  const juzInfo = JUZ_DATA.find(j => j.juz === juz);
+  if (juzInfo) {
+    selectSurah(juzInfo.surah, juzInfo.ayah);
+  }
+}
+
+
+juzBtn.addEventListener('click', () => {
+  const surahGrid = document.querySelector('#surahGrid');
+  const juzGrid = document.querySelector('#juzGrid');
+  const surahHeader = document.querySelector('.toc h2');
+
+  if (surahGrid.style.display !== 'none') {
+    surahGrid.style.display = 'none';
+    juzGrid.style.display = 'grid';
+    surahHeader.textContent = 'Daftar Juz';
+    juzBtn.textContent = 'Pilih Surah';
+  } else {
+    surahGrid.style.display = 'grid';
+    juzGrid.style.display = 'none';
+    surahHeader.textContent = 'Daftar Surah';
+    juzBtn.textContent = 'Pilih Juz';
+  }
+});
 
 function renderContinue(bm){
   const card = document.querySelector('#continueCard');
