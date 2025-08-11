@@ -10,12 +10,18 @@ const bismillah = el('#bismillah');
 const bookmarkBtn = el('#bookmarkBtn');
 const themeBtn = el('#themeBtn');
 const aboutBtn = el('#aboutBtn');
+const settingsBtn = el('#settingsBtn');
 
 const modal = el('#modal');
 const modalTitle = el('#modalTitle');
 const modalBody = el('#modalBody');
 const modalClose = el('#modalClose');
 const modalBackdrop = el('#modalBackdrop');
+
+const settingsModal = el('#settingsModal');
+const settingsModalClose = el('#settingsModalClose');
+const settingsModalBackdrop = el('#settingsModalBackdrop');
+const fontSizeSlider = el('#fontSizeSlider');
 
 const state = {
   surahs: [], // {number, name, name_latin, number_of_ayah}
@@ -25,6 +31,7 @@ const state = {
 
 const BOOKMARK_KEY = 'quran.bookmark.v1';
 const THEME_KEY = 'quran.theme.v1';
+const FONT_SIZE_KEY = 'quran.fontsize.v1';
 
 const JUZ_DATA = [
   { juz: 1, surah: 1, ayah: 1 },
@@ -77,6 +84,33 @@ function openModal(title, html) {
 function closeModal() { modal.classList.add('hidden'); }
 modalClose.addEventListener('click', closeModal);
 modalBackdrop.addEventListener('click', closeModal);
+
+function openSettings() { settingsModal.classList.remove('hidden'); }
+function closeSettings() { settingsModal.classList.add('hidden'); }
+settingsBtn.addEventListener('click', openSettings);
+settingsModalClose.addEventListener('click', closeSettings);
+settingsModalBackdrop.addEventListener('click', closeSettings);
+
+fontSizeSlider.addEventListener('input', (e) => {
+  const fontSize = e.target.value;
+  applyFontSize(fontSize);
+  localStorage.setItem(FONT_SIZE_KEY, fontSize);
+});
+
+function applyFontSize(size) {
+  document.documentElement.style.setProperty('--arabic-font-size', `${size}rem`);
+}
+
+function loadAndApplySettings() {
+  // Font size
+  const savedFontSize = localStorage.getItem(FONT_SIZE_KEY) || '1.7';
+  fontSizeSlider.value = savedFontSize;
+  applyFontSize(savedFontSize);
+
+  // Theme
+  applyTheme(currentTheme());
+}
+
 
 async function fetchJSON(path) {
   const res = await fetch(path);
@@ -375,6 +409,7 @@ function renderSurah(s) {
 }
 
 loadSurahList();
+loadAndApplySettings();
 
 // Theme handling
 function applyTheme(theme){
@@ -392,7 +427,8 @@ function onThemeToggle(){
   localStorage.setItem(THEME_KEY,next);
   applyTheme(next);
 }
-applyTheme(currentTheme());
+// We call this in loadAndApplySettings now
+// applyTheme(currentTheme());
 
 // Auto-bookmark on scroll (last read)
 let bookmarkTimer = null;

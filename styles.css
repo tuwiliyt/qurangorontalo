@@ -71,7 +71,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .ayat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem}
 .badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--badge-bg);border:1px solid var(--badge-border);color:var(--badge-text);font-size:.75rem;padding:.2rem .45rem;border-radius:999px}
 .juz-sep{position:sticky;top:48px;margin:.75rem 0 .25rem;background:var(--juz-bg);color:var(--juz-text);border:1px solid var(--juz-border);border-radius:999px;padding:.25rem .6rem;width:max-content}
-.arabic{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:clamp(1.2rem,5vw,2rem);line-height:2;text-align:right;direction:rtl;color:#111}
+.arabic{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:var(--arabic-font-size, clamp(1.2rem,5vw,2rem));line-height:2;text-align:right;direction:rtl;color:#111}
 .arabic{color:var(--text)}
 .trans{display:grid;grid-template-columns:1fr;gap:.35rem;margin-top:.4rem}
 .trans .id,.trans .gor{font-size:.98rem}
@@ -91,6 +91,58 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .modal-title{font-weight:600}
 .modal-body{padding:1rem}
 .modal-body pre{white-space:pre-wrap;word-wrap:break-word;font-family:inherit}
+
+.setting {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.slider-container .large-font {
+  font-size: 1.5rem;
+}
+
+input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--badge-bg);
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+input[type="range"]:hover {
+  opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
 @media(min-width:720px){.trans{grid-template-columns:1fr 1fr}}
 @media(min-width:900px){
   .home.elegant{grid-template-columns:1.1fr .9fr}
