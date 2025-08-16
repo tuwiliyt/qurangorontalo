@@ -81,6 +81,7 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .icon-btn{border:1px solid var(--btn-border);background:var(--card);color:var(--text);border-radius:8px;font-size:14px;padding:.2rem .45rem;cursor:pointer}
 .icon-btn:hover{background:var(--btn-hover)}
 .icon-btn.active{background:var(--juz-bg);border-color:var(--juz-border);color:var(--juz-text)}
+.icon-btn.playing {background-color: var(--accent); color: white;}
 .app-footer{padding:1rem;color:#666;font-size:.85rem;text-align:center}
 .modal.hidden{display:none}
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
@@ -91,6 +92,12 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,s
 .modal-title{font-weight:600}
 .modal-body{padding:1rem}
 .modal-body pre{white-space:pre-wrap;word-wrap:break-word;font-family:inherit}
+
+.modal-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  text-align: right;
+}
 
 .setting {
   display: flex;
@@ -143,8 +150,438 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
 }
 
+/* Global Search Styles */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 400px;
+  margin: 0 1rem;
+}
+
+.global-search {
+  flex: 1;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--btn-border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.global-search:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+}
+
+.search-btn {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--btn-border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-btn:hover {
+  background: var(--btn-hover);
+}
+
+/* Responsive search */
+@media (max-width: 768px) {
+  .search-container {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 0.5rem 0 0 0;
+  }
+  
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-select, .form-input, .form-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--btn-border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.form-select:focus, .form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--btn-border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--btn-hover);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: #0d94d8;
+}
+
+.btn-secondary {
+  background: var(--card);
+  color: var(--text);
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: white;
+  border-color: #25d366;
+}
+
+.btn-whatsapp:hover {
+  background: #1ea952;
+}
+
+.btn-telegram {
+  background: #0088cc;
+  color: white;
+  border-color: #0088cc;
+}
+
+.btn-telegram:hover {
+  background: #0077b3;
+}
+
+.btn-twitter {
+  background: #1da1f2;
+  color: white;
+  border-color: #1da1f2;
+}
+
+.btn-twitter:hover {
+  background: #1a91da;
+}
+
+/* Bookmark Manager */
+.bookmark-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--btn-border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: var(--btn-hover);
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.bookmark-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.bookmark-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  background: var(--card);
+}
+
+.bookmark-info {
+  flex: 1;
+}
+
+.bookmark-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.bookmark-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.bookmark-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Social Sharing */
+.share-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.share-preview {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--bg);
+}
+
+.share-ayah-info h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--accent);
+}
+
+.share-ayah-info p {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+}
+
+.share-text-preview {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.share-arabic {
+  font-family: 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  font-size: 1.2rem;
+  text-align: right;
+  direction: rtl;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.share-translation {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.share-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.share-format {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.share-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+/* Enhanced UI/UX */
+.ayat {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.ayat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.icon-btn {
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  transform: scale(1.05);
+}
+
+.icon-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+  background: #10b981;
+}
+
+.notification.error {
+  background: #ef4444;
+}
+
+.notification.info {
+  background: var(--accent);
+}
+
 @media(min-width:720px){.trans{grid-template-columns:1fr 1fr}}
 @media(min-width:900px){
   .home.elegant{grid-template-columns:1.1fr .9fr}
   .hero img{height:100%}
+}
+
+
+.ayat.highlight {
+  background-color: var(--juz-bg);
+  transition: background-color 0.5s ease;
+}
+
+.bookmark-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+  white-space: pre-wrap;
+}
+
+.chip {
+    display: inline-block;
+    padding: .25rem .5rem;
+    border-radius: 1rem;
+    font-size: .75rem;
+    font-weight: 500;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    border: 1px solid var(--badge-border);
+}
+
+/* --- Responsive Improvements --- */
+
+/* For smaller phones */
+@media (max-width: 480px) {
+  .app-header {
+    padding: 0.5rem;
+  }
+  .content {
+    padding: 0.5rem;
+  }
+  .surah-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+  .juz-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+  .ayat {
+    padding: 0.5rem;
+  }
+  .modal-card {
+    width: 95vw;
+    max-height: 90vh;
+  }
+}
+
+/* Improve tap targets for touch devices */
+.control, .icon-btn, .btn {
+  min-height: 44px; /* Minimum touch target size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjust hero section for better readability on different screens */
+.hero-art .calligraphy {
+    font-size: clamp(4rem, 20vw, 8rem);
+}
+.hero-art .hero-overlay {
+    font-size: clamp(1.2rem, 5vw, 2rem);
 }
